@@ -4,6 +4,13 @@ import libraryLogo from '../assets/Library.svg'
 
 
 const Nav = () => {
+  function openMenu() {
+    document.body.classList += " menu--open"
+  }
+
+  function closeMenu() { 
+    document.body.classList.remove('menu--open')
+  }
   return (
     <nav>
       <div className="nav__container">
@@ -21,7 +28,7 @@ const Nav = () => {
               Books
             </a>
           </li>
-          <button className="btn__menu">
+          <button className="btn__menu" onClick={openMenu}>
             <FontAwesomeIcon icon="bars" />
           </button>
           <li className="nav__icon">
@@ -31,9 +38,9 @@ const Nav = () => {
             </a>
           </li>
         </ul>
-        <div className="menu__backdrop">
+        <div className="menu__backdrop" onClick={closeMenu}>
           <button className="btn__menu btn__menu--close">
-            {/* <FontAwesomeIcon icon="times" /> */}
+            <FontAwesomeIcon icon="times"/>
           </button>
           <ul className="menu__links">
             <li className="menu__list">

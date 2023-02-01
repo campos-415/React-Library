@@ -1,12 +1,13 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-const Book = (icon, title, normalPrice) => {
+const Book = ({book}) => {
   return (
     <div className="book">
       <a href="/">
         <figure className="book__img--wrapper">
           <img
-            src="https://covers.openlibrary.org/b/id/10958382-L.jpg"
+            src={book.url}
             alt=""
             className="book__img"
           />
@@ -14,18 +15,32 @@ const Book = (icon, title, normalPrice) => {
       </a>
       <div className="book__title">
         <a href="/" className="book__title--link">
-          {title}
+          {book.title}
         </a>
       </div>
       <div className="book__ratings">
-        {icon}
-        {icon}
-        {icon}
-        {icon}
-        {icon}
+
+        {
+          new Array(Math.floor(book.rating)).fill(0).map((_, index) => <FontAwesomeIcon icon="star" key={index} /> )
+        }
+
+        {
+          !Number.isInteger(book.rating) && <FontAwesomeIcon icon="star-half-alt" />
+        }
       </div>
       <div className="book__price">
-        <span className="book__price--normal">{normalPrice}</span> $10.99
+        {
+          book.salePrice ? (
+             <>
+              <span className="book__price--normal">${book.originalPrice.toFixed(2)}</span>${book.salePrice.toFixed(2)}
+             </>
+          ) : (
+            <>
+              ${book.originalPrice.toFixed(2)}
+            </>
+          )
+        }
+       
       </div>
     </div>
   );
