@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import Book from "../components/ui/Book";
 
 const Books = ({ books: initialBooks }) => {
+
   const [books, setBooks] = useState(initialBooks);
+
   function filterBooks(filter) {
     if (filter === "LOW__TO__HIGH") {
-      setBooks(
-        books.map((books) => {
-          <Book book={books} />;
-        })
-      );
+      setBooks(books.slice().sort((a, b) => (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice) ))
     }
-    console.log(filter);
+    if (filter === "HIGH__TO__LOW") {
+      setBooks(books.slice().sort((a, b) => (b.salePrice || b.originalPrice) - (a.salePrice || a.originalPrice) ))
+    }
+    if (filter === "RATING") {
+      setBooks(books.slice().sort((a, b) => b.rating - a.rating))
+    }
   }
+
   return (
     <div className="books__body">
       <main id="books__main">
@@ -38,6 +42,9 @@ const Books = ({ books: initialBooks }) => {
                 </select>
               </div>
               <div className="books">
+                {
+                  books.map((book) => <Book book={book} key={book.id} />)
+                }
               </div>
             </div>
           </div>
