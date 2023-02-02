@@ -12,7 +12,7 @@ const Discounted = () => {
             {books
               .filter(book => book.salePrice !== null)
               .slice(0,4)
-              .map((book) => <Book book={book} key={book.id} />)
+              .map((book) => <Book book={book} key={book.id} onClick={book.id} />)
             }
           </div>
         </div>
