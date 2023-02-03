@@ -1,16 +1,15 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import libraryLogo from '../assets/Library.svg'
+import libraryLogo from "../assets/Library.svg";
 import { Link } from "react-router-dom";
-
 
 const Nav = () => {
   function openMenu() {
-    document.body.classList += " menu--open"
+    document.body.classList += " menu--open";
   }
 
-  function closeMenu() { 
-    document.body.classList.remove('menu--open')
+  function closeMenu() {
+    document.body.classList.remove("menu--open");
   }
   return (
     <nav>
@@ -41,7 +40,7 @@ const Nav = () => {
         </ul>
         <div className="menu__backdrop" onClick={closeMenu}>
           <button className="btn__menu btn__menu--close">
-            <FontAwesomeIcon icon="times"/>
+            <FontAwesomeIcon icon="times" />
           </button>
           <ul className="menu__links">
             <li className="menu__list">
@@ -66,4 +65,4 @@ const Nav = () => {
   );
 };
 
-export default Nav
+export default Nav;
