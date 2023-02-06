@@ -53,15 +53,9 @@ function App() {
     console.log(+quantity);
   }
 
-  function removeItem(cart, item) {
-    
-    setCart(
-      cart.find((book) => {
-        if (book.id === item.id) {
-          console.log('removed')
-        }
-      })
-    )
+  function removeItem(item) {
+    setCart(cart.filter((book) => book.id !== item.id))
+
   }
 
   return (
