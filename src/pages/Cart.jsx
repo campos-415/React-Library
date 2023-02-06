@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import emptyCart from "../assets/empty_cart.svg";
 
-const Cart = ({ books, cart, changeQuantity, removeItem }) => {
+const Cart = ({ numberOfItems, cart, changeQuantity, removeItem }) => {
   const total = () => {
     let price = 0;
     cart.forEach((item) => {
@@ -86,6 +86,7 @@ const Cart = ({ books, cart, changeQuantity, removeItem }) => {
               <div className="total">
                 <div className="total__item total__sub-total">
                   <span>Total Items</span>
+                  <span>{numberOfItems()}</span>
                   <span></span>
                 </div>
                 <div className="total__item total__sub-total">

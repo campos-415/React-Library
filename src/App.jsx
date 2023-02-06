@@ -85,6 +85,7 @@ function App() {
                   cart={cart}
                   changeQuantity={changeQuantity}
                   removeItem={removeItem}
+                  numberOfItems={numberOfItems}
                 />
               }
             />
